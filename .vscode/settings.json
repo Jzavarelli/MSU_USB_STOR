@@ -1,0 +1,6 @@
+{
+    "git.ignoreLimitWarning": true,
+    "java.project.sourcePaths": [
+        "Repo\\MSU_USB_STOR"
+    ]
+}
