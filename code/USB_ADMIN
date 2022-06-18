@@ -1,0 +1,21 @@
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
+
+
+//Admin Class: Functions as the class that will be updated and edited with the clients information. Specific admin functionality is acessed with a base password.
+public class USB_ADMIN extends JFrame implements USB_FRAME, ActionListener
+{
+    public USB_ADMIN()
+    {
+
+    }
+
+    @Override
+    public void actionConfirmedAdmin(ActionEvent eve)
+    {
+        
+    }
+}

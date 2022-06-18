@@ -1,0 +1,22 @@
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
+
+//User Class: Functions as a child to the main class and will be used to format a users experience with the software. 
+public class USB_USER extends JFrame implements USB_FRAME, ActionListener
+{
+
+    public USB_USER()
+    {
+
+    }
+
+    @Override
+    public void actionConfirmedUser(ActionEvent eve)
+    {
+
+    }
+
+}
