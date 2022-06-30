@@ -13,14 +13,15 @@ public class USB_USER extends JFrame implements USB_FRAME, ActionListener
     JPanel titleP = new JPanel();
     JPanel textP = new JPanel();
     JPanel buttonP = new JPanel();
+    JPanel formatP = new JPanel();
 
-    JLabel userHeader = new JLabel("HELLO");
+    JLabel userHeader = new JLabel("CLINICAL TRIAL PATIENT INFORMATION");
 
-    JLabel userTextA = new JLabel("A adlsfkjsdflksdjflskdjfsldkfjsf");
-    JLabel userTextB = new JLabel("B adlsfkjsdflksdjflskdjfsldkfjsf");
-    JLabel userTextC = new JLabel("C adlsfkjsdflksdjflskdjfsldkfjsf");
-    JLabel userTextD = new JLabel("D adlsfkjsdflksdjflskdjfsldkfjsf");
-    JLabel userTextE = new JLabel("E adlsfkjsdflksdjflskdjfsldkfjsf");
+    JLabel userTextA = new JLabel("[STAND-IN FACILITY CONTACT-PROVIDER]");
+    JLabel userTextB = new JLabel("[STAND-IN FACILITY EMAIL]");
+    JLabel userTextC = new JLabel("[STAND-IN FACILITY NAME]");
+    JLabel userTextD = new JLabel("[STAND-IN FACILITY LOCATION]");
+    JLabel userTextE = new JLabel("[STAND-IN ADDITIONAL INFORMATION]");
 
     JButton userInCare = new JButton("In-Care");
     JButton userExit = new JButton("Exit");
@@ -33,7 +34,7 @@ public class USB_USER extends JFrame implements USB_FRAME, ActionListener
     Color frontColor = new Color(0, 25, 51);
     Color textColor = new Color(255, 255, 255);
 
-
+    //Constructor
     public USB_USER()
     {
         super();
@@ -43,36 +44,52 @@ public class USB_USER extends JFrame implements USB_FRAME, ActionListener
     @Override
     public void buildFrame()
     {
+        //Customization to the JFrame settup
         setTitle("Client Information Area");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(W_PARAM, H_PARAM);
         setLocationRelativeTo(null);
         setLayout(new GridLayout(3, 1, 25, 25));
 
+        //Core Container Settup
         Container userCont = this.getContentPane();
+        userCont.setLayout(new BorderLayout(10, 10));
 
-        userCont.add(titleP);
-        userCont.add(textP);
-        userCont.add(buttonP);
+        //Panel and Container Settup
+        userCont.add(titleP, BorderLayout.NORTH);
+        userCont.add(formatP, BorderLayout.CENTER);
+        userCont.add(buttonP, BorderLayout.SOUTH);
 
+        //Title Components
         titleP.setLayout(new FlowLayout());
         titleP.add(userHeader);
         userHeader.setFont(titleFont);
 
-        textP.setLayout(new GridLayout(5,1));
+        //Main Text Components
+        formatP.setLayout(new BorderLayout(10, 10));
+        formatP.add(textP, BorderLayout.CENTER);
+
+        textP.setLayout(new GridLayout(7, 1, 10, 10));
         textP.add(userTextA);
         textP.add(userTextB);
         textP.add(userTextC);
         textP.add(userTextD);
         textP.add(userTextE);
 
-        // Button Region
+        //Button Components
         buttonP.setLayout(new FlowLayout());
         userInCare.setFont(buttonFont);
         userExit.setFont(buttonFont);
+
+        userInCare.setForeground(textColor);
+        userExit.setForeground(textColor);
+        userInCare.setBackground(backColor);
+        userExit.setBackground(backColor);
+
         buttonP.add(userInCare);
         buttonP.add(userExit);
 
+        //Button Listeners
         userInCare.addActionListener(this);
         userExit.addActionListener(this);
 
