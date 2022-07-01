@@ -6,8 +6,10 @@ import java.net.URI;
 //User Class: Functions as a child to the main class and will be used to format a users experience with the software. 
 public class USB_USER extends JFrame implements USB_FRAME, ActionListener
 {
-    final int H_PARAM = 750;
+    final int H_PARAM = 500;
     final int W_PARAM = 500;
+
+    Boolean systemCheck = false;
 
     // BuildFrame Variables: Used in the main class for our password area
     JPanel titleP = new JPanel();
@@ -15,13 +17,9 @@ public class USB_USER extends JFrame implements USB_FRAME, ActionListener
     JPanel buttonP = new JPanel();
     JPanel formatP = new JPanel();
 
-    JLabel userHeader = new JLabel("CLINICAL TRIAL PATIENT INFORMATION");
-
-    JLabel userTextA = new JLabel("[STAND-IN FACILITY CONTACT-PROVIDER]");
-    JLabel userTextB = new JLabel("[STAND-IN FACILITY EMAIL]");
-    JLabel userTextC = new JLabel("[STAND-IN FACILITY NAME]");
-    JLabel userTextD = new JLabel("[STAND-IN FACILITY LOCATION]");
-    JLabel userTextE = new JLabel("[STAND-IN ADDITIONAL INFORMATION]");
+    JLabel userHeader = new JLabel("<html>YOUR PATIENT IS A CLINICAL TRIAL PARTICIPANT</html>");
+    JLabel userTextA = new JLabel("THEY HAVE RECEIVED DRUGS THAT MAY INTERACT WITH STANDARD THERAPIES");
+    JLabel userTextB = new JLabel("PLEASE CLICK THE ‘IN-CARE’ BUTTON TO ACCESS SAFETY-RELATED INFORMATION");
 
     JButton userInCare = new JButton("In-Care");
     JButton userExit = new JButton("Exit");
@@ -35,11 +33,7 @@ public class USB_USER extends JFrame implements USB_FRAME, ActionListener
     Color textColor = new Color(255, 255, 255);
 
     //Constructor
-    public USB_USER()
-    {
-        super();
-        buildFrame();
-    }
+    public USB_USER() {}
 
     @Override
     public void buildFrame()
@@ -72,9 +66,6 @@ public class USB_USER extends JFrame implements USB_FRAME, ActionListener
         textP.setLayout(new GridLayout(7, 1, 10, 10));
         textP.add(userTextA);
         textP.add(userTextB);
-        textP.add(userTextC);
-        textP.add(userTextD);
-        textP.add(userTextE);
 
         //Button Components
         buttonP.setLayout(new FlowLayout());
@@ -97,19 +88,27 @@ public class USB_USER extends JFrame implements USB_FRAME, ActionListener
         setResizable(false);
     }
 
-    public void runWebsite()
+    public void runWebsite(Boolean checkVari)
     {
 
-        try
-        { 
-            //Launches website twice when executed, due to multiple listeners with the object ****
-            Desktop.getDesktop().browse(new URI("https://trialwearsafety.com/"));
-            System.exit(0);
-        }
-        catch (Exception e)
+        if(checkVari == true)
         {
-            e.printStackTrace();
-        }
+            try
+            { 
+                //Launches website twice when executed, due to multiple listeners with the object ****
+                Desktop.getDesktop().browse(new URI("https://trialwearsafety.com/"));
+                System.exit(0);
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }   
+    }
+
+    public Boolean getBoolean()
+    {
+        return systemCheck;
     }
 
     @Override
@@ -124,7 +123,7 @@ public class USB_USER extends JFrame implements USB_FRAME, ActionListener
 
         if(eve.getSource() == userInCare)
         {
-            runWebsite();
+            systemCheck = true;
         }
         
     }

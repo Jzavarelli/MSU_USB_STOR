@@ -17,44 +17,38 @@ public class USB_JAVA extends JOptionPane
 
     public static void main(String[] args) 
     {
-        Boolean boolAdmin = false;
-        Boolean boolUser = false;
+        USB_USER userSys = new USB_USER();
 
-        String userPass = "null";
+        Boolean systemCheck;
+        String userPass;
+        int looper = 0;
 
-        UIManager.put("OptionPane.cancelButtonText", "Exit");
-        UIManager.put("OptionPane.okButtonText", "Submit");
+        userSys.buildFrame();
 
-        userPass = JOptionPane.showInputDialog(null, "Enter the pathients date of birth.", "Submit Patient Password", QUESTION_MESSAGE);
-
-        //Boolean Setter for Frame Selection
-        if(userPass.equals(ADMIN_COND))
+        while(looper < 1)
         {
-            boolAdmin = true;
+            systemCheck = userSys.getBoolean();
+            System.out.println("");
+
+            if(systemCheck == true)
+            {
+                UIManager.put("OptionPane.cancelButtonText", "Exit");
+                UIManager.put("OptionPane.okButtonText", "Submit");
+        
+                userPass = JOptionPane.showInputDialog(null, "Enter the patients date of birth.", "Submit Patient Password", QUESTION_MESSAGE);
+
+                if(userPass.equals(USER_COND))
+                {
+                    userSys.runWebsite(systemCheck);
+                    looper = 1;
+                }
+                else if(userPass.equals(ADMIN_COND))
+                {
+
+                }
+
+            }
         }
-        else if(userPass.equals(USER_COND))
-        {
-            boolUser = true;
-        }
-
-        //Buildframe Selector*9
-        if(boolAdmin)
-        {
-
-            USB_ADMIN adminSys = new USB_ADMIN();
-            adminSys.buildFrame();
-            boolAdmin = false;
-
-        }
-        else if(boolUser)
-        {
-
-            USB_USER userSys = new USB_USER();
-            userSys.buildFrame();
-            boolUser = false;
-
-        }
-
     }
 
 }

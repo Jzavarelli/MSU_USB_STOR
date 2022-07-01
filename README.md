@@ -5,5 +5,7 @@ The following storage is the basis of coding development and planning. The follo
 ## Research
 The coding language used in the following research will be the Java language. The code will be created on the visual studio code development environment. The software being developed will use a list of API's, and the development will be connected to government clearance. 
 
+During development the methods of GUI development were used. The GUI uses JOptionPane and JFrame to create a basic checking system. We implement if statements and boolean variables to make sure the system fully works without any major complications between our two primary classes.
+
 ## Code Development
 The code is formatted with a base heirarchy that consist of a frame interfacing module. The other classes serve as launching mechanism for the USB software system.
