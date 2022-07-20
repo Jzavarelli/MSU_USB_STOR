@@ -1,15 +1,18 @@
+// Imported Packages
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.net.URI;
 
-//User Class: Functions as a child to the main class and will be used to format a users experience with the software. 
+// User Class: Functions as a child to the main class and will be used to format a users experience with the software. 
 public class USB_USER extends JFrame implements USB_FRAME, ActionListener
 {
-    final int H_PARAM = 500;
-    final int W_PARAM = 500;
+    final int H_PARAM = 275;
+    final int W_PARAM = 600;
 
     Boolean systemCheck = false;
+
+    Image img = Toolkit.getDefaultToolkit().getImage("C:\\Users\\jlzav\\Documents\\MSU_Internship\\Repo\\MSU_USB_STOR\\TrialWear_Logo.png");
 
     // BuildFrame Variables: Used in the main class for our password area
     JPanel titleP = new JPanel();
@@ -17,57 +20,82 @@ public class USB_USER extends JFrame implements USB_FRAME, ActionListener
     JPanel buttonP = new JPanel();
     JPanel formatP = new JPanel();
 
-    JLabel userHeader = new JLabel("<html>YOUR PATIENT IS A CLINICAL TRIAL PARTICIPANT</html>");
-    JLabel userTextA = new JLabel("THEY HAVE RECEIVED DRUGS THAT MAY INTERACT WITH STANDARD THERAPIES");
-    JLabel userTextB = new JLabel("PLEASE CLICK THE ‘IN-CARE’ BUTTON TO ACCESS SAFETY-RELATED INFORMATION");
+    JLabel userHeader = new JLabel("YOUR PATIENT IS A CLINICAL", SwingConstants.CENTER);
+    JLabel userHeader2 = new JLabel("TRIAL PARTICIPANT", SwingConstants.CENTER);
+    JLabel userTextA = new JLabel("THEY HAVE RECEIVED DRUGS THAT MAY INTERACT WITH STANDARD", SwingConstants.CENTER);
+    JLabel userTextA2 = new JLabel("THERAPIES.    PLEASE CLICK THE ‘IN-CARE’ BUTTON TO ACCESS", SwingConstants.CENTER);
+    JLabel userTextB = new JLabel("SAFETY-RELATED INFORMATION.", SwingConstants.CENTER);
+    JLabel fluffText1 = new JLabel("", SwingConstants.CENTER);
+    JLabel fluffText2 = new JLabel("", SwingConstants.CENTER);
+    JLabel fluffText3 = new JLabel("", SwingConstants.CENTER);
 
     JButton userInCare = new JButton("In-Care");
     JButton userExit = new JButton("Exit");
 
-    //Customization
-    Font titleFont = new Font("Times New Roman", Font.BOLD, 20);
-    Font descrFont = new Font("Times New Roman", Font.PLAIN, 20);
+    // Customization
+    Font titleFont = new Font("Times New Roman", Font.BOLD, 22);
+    Font descrFont = new Font("Times New Roman", Font.BOLD, 15);
     Font buttonFont = new Font("Times New Roman", Font.BOLD, 15);
+
     Color backColor = new Color(0, 89, 0);
     Color frontColor = new Color(0, 25, 51);
     Color textColor = new Color(255, 255, 255);
 
-    //Constructor
+    // Constructor
     public USB_USER() {}
 
     @Override
     public void buildFrame()
     {
-        //Customization to the JFrame settup
+        // Testing Enviro
+        // titleP.setBackground(Color.CYAN);
+        // textP.setBackground(Color.RED);
+        // buttonP.setBackground(Color.GREEN);
+
+        // Customization to the JFrame settup
         setTitle("Client Information Area");
+        setIconImage(img);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(W_PARAM, H_PARAM);
         setLocationRelativeTo(null);
-        setLayout(new GridLayout(3, 1, 25, 25));
+        setLayout(new GridLayout(3, 1, 0, 25));
 
-        //Core Container Settup
+        // Core Container Settup
         Container userCont = this.getContentPane();
         userCont.setLayout(new BorderLayout(10, 10));
 
-        //Panel and Container Settup
+        // Panel and Container Settup
         userCont.add(titleP, BorderLayout.NORTH);
         userCont.add(formatP, BorderLayout.CENTER);
         userCont.add(buttonP, BorderLayout.SOUTH);
 
-        //Title Components
-        titleP.setLayout(new FlowLayout());
-        titleP.add(userHeader);
+        // Header Components
+        titleP.setLayout(new GridLayout(3, 1));
         userHeader.setFont(titleFont);
+        userHeader2.setFont(titleFont);
 
-        //Main Text Components
-        formatP.setLayout(new BorderLayout(10, 10));
+        titleP.add(fluffText1);
+        titleP.add(userHeader);
+        titleP.add(userHeader2);
+
+
+
+        // Text Components
+        formatP.setLayout(new BorderLayout(1, 1));
         formatP.add(textP, BorderLayout.CENTER);
 
-        textP.setLayout(new GridLayout(7, 1, 10, 10));
-        textP.add(userTextA);
-        textP.add(userTextB);
+        textP.setLayout(new GridLayout(5, 1, 1, 5));
+        userTextA.setFont(descrFont);
+        userTextA2.setFont(descrFont);
+        userTextB.setFont(descrFont);
 
-        //Button Components
+        textP.add(fluffText2);
+        textP.add(userTextA);
+        textP.add(userTextA2);
+        textP.add(userTextB);
+        textP.add(fluffText3);
+
+        // Button Components
         buttonP.setLayout(new FlowLayout());
         userInCare.setFont(buttonFont);
         userExit.setFont(buttonFont);

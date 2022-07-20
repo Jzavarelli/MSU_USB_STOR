@@ -1,24 +1,28 @@
+// Imported Packages
 import javax.swing.*;
 import java.awt.event.*;
 
-//Admin Class: Functions as the class that will be updated and edited with the clients information. Specific admin functionality is acessed with a base password.
+// Admin Class: Exists to set the initial password, and is accessed through the initial patient portal and password access.
 public class USB_ADMIN extends JFrame implements USB_FRAME, ActionListener
 {
 
-    // BuildFrame Variables: Used in the main class for our password area.
+    // Variables: Main class variables used for parameters and declarations.
     JFrame adminFrame = new JFrame("Admin Control Editor");
 
+    // Constructor
     public USB_ADMIN()
     {
         buildFrame();
     }
 
+    // buildFrame Method: 
     @Override
     public void buildFrame()
     {
 
     }
 
+    // actionPerformed Method:
     @Override
     public void actionPerformed(ActionEvent event) 
     {

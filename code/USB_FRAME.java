@@ -1,8 +1,6 @@
-
-
-
-//Interface System: Used to link the parameters and systems for GUI frames to our Admin Class and our User class.
+// Interface Class: Allows the admin and user classes to have a linked class.
 public interface USB_FRAME
 {
+    // Interface buildFrame Method
     public void buildFrame();
 }
