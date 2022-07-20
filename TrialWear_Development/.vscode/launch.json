@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch USB_TRIALWEAR",
+            "request": "launch",
+            "mainClass": "USB_TRIALWEAR",
+            "projectName": "TrialWear_Development_d86e0e35"
+        },
+        {
+            "type": "java",
+            "name": "Launch USB_TRIALWEAR",
+            "request": "launch",
+            "mainClass": "USB_TRIALWEAR",
+            "projectName": "MSU_Internship_35ead576"
+        },
+        {
+            "type": "java",
+            "name": "Launch USB_JAVA",
+            "request": "launch",
+            "mainClass": "USB_JAVA",
+            "projectName": "MSU_Internship_35ead576"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        }
+    ]
+}
