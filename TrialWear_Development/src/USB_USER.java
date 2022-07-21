@@ -9,6 +9,7 @@ public class USB_USER extends JFrame implements USB_FRAME, ActionListener
 {
     final int H_PARAM = 275;
     final int W_PARAM = 600;
+    final int POP_LIMIT = 5;
 
     Boolean systemCheck = false;
 
@@ -25,9 +26,7 @@ public class USB_USER extends JFrame implements USB_FRAME, ActionListener
     JLabel userTextA = new JLabel("THEY HAVE RECEIVED DRUGS THAT MAY INTERACT WITH STANDARD", SwingConstants.CENTER);
     JLabel userTextA2 = new JLabel("THERAPIES.    PLEASE CLICK THE ‘IN-CARE’ BUTTON TO ACCESS", SwingConstants.CENTER);
     JLabel userTextB = new JLabel("SAFETY-RELATED INFORMATION.", SwingConstants.CENTER);
-    JLabel fluffText1 = new JLabel("", SwingConstants.CENTER);
-    JLabel fluffText2 = new JLabel("", SwingConstants.CENTER);
-    JLabel fluffText3 = new JLabel("", SwingConstants.CENTER);
+    JLabel fluffText[] = new JLabel[POP_LIMIT];
 
     JButton userInCare = new JButton("In-Care");
     JButton userExit = new JButton("Exit");
@@ -47,10 +46,6 @@ public class USB_USER extends JFrame implements USB_FRAME, ActionListener
     @Override
     public void buildFrame()
     {
-        // Testing Enviro
-        // titleP.setBackground(Color.CYAN);
-        // textP.setBackground(Color.RED);
-        // buttonP.setBackground(Color.GREEN);
 
         // Customization to the JFrame settup
         setTitle("Client Information Area");
@@ -69,16 +64,34 @@ public class USB_USER extends JFrame implements USB_FRAME, ActionListener
         userCont.add(formatP, BorderLayout.CENTER);
         userCont.add(buttonP, BorderLayout.SOUTH);
 
+        /* --------------------------------------------------------------------- */
+
+
+
+        // Populator - Settup for empty labels in formatting
+
+        for(int i = 0; i < POP_LIMIT; ++i)
+        {
+            fluffText[i] = new JLabel("");
+        }
+
+        /* --------------------------------------------------------------------- */
+
         // Header Components
-        titleP.setLayout(new GridLayout(3, 1));
+        titleP.setLayout(new GridLayout(4, 1));
         userHeader.setFont(titleFont);
         userHeader2.setFont(titleFont);
 
-        titleP.add(fluffText1);
+        titleP.setBackground(backColor);
+        userHeader.setForeground(textColor);
+        userHeader2.setForeground(textColor);
+
+        titleP.add(fluffText[0]);
         titleP.add(userHeader);
         titleP.add(userHeader2);
+        titleP.add(fluffText[1]);
 
-
+        /* --------------------------------------------------------------------- */
 
         // Text Components
         formatP.setLayout(new BorderLayout(1, 1));
@@ -89,11 +102,11 @@ public class USB_USER extends JFrame implements USB_FRAME, ActionListener
         userTextA2.setFont(descrFont);
         userTextB.setFont(descrFont);
 
-        textP.add(fluffText2);
+        textP.add(fluffText[2]);
         textP.add(userTextA);
         textP.add(userTextA2);
         textP.add(userTextB);
-        textP.add(fluffText3);
+        textP.add(fluffText[3]);
 
         // Button Components
         buttonP.setLayout(new FlowLayout());
