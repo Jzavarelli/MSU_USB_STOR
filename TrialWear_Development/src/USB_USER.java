@@ -16,7 +16,7 @@ public class USB_USER extends JFrame implements USB_FRAME, ActionListener
     Image img = Toolkit.getDefaultToolkit().getImage("C:\\Users\\jlzav\\Documents\\MSU_Internship\\Repo\\MSU_USB_STOR\\TrialWear_Development\\TrialWear_Logo.png");
 
     // BuildFrame Variables: Used in the main class for our password area
-    JPanel titleP = new JPanel();
+    JPanel headerP = new JPanel();
     JPanel textP = new JPanel();
     JPanel buttonP = new JPanel();
     JPanel formatP = new JPanel();
@@ -24,7 +24,7 @@ public class USB_USER extends JFrame implements USB_FRAME, ActionListener
     JLabel userHeader = new JLabel("YOUR PATIENT IS A CLINICAL", SwingConstants.CENTER);
     JLabel userHeader2 = new JLabel("TRIAL PARTICIPANT", SwingConstants.CENTER);
     JLabel userTextA = new JLabel("THEY HAVE RECEIVED DRUGS THAT MAY INTERACT WITH STANDARD", SwingConstants.CENTER);
-    JLabel userTextA2 = new JLabel("THERAPIES.    PLEASE CLICK THE ‘IN-CARE’ BUTTON TO ACCESS", SwingConstants.CENTER);
+    JLabel userTextA2 = new JLabel("", SwingConstants.CENTER);
     JLabel userTextB = new JLabel("SAFETY-RELATED INFORMATION.", SwingConstants.CENTER);
     JLabel fluffText[] = new JLabel[POP_LIMIT];
 
@@ -33,7 +33,7 @@ public class USB_USER extends JFrame implements USB_FRAME, ActionListener
 
     // Customization
     Font titleFont = new Font("Times New Roman", Font.BOLD, 22);
-    Font descrFont = new Font("Times New Roman", Font.BOLD, 15);
+    Font descrFont = new Font("Times New Roman", Font.PLAIN, 15);
     Font buttonFont = new Font("Times New Roman", Font.BOLD, 15);
 
     Color backColor = new Color(0, 89, 0);
@@ -60,7 +60,7 @@ public class USB_USER extends JFrame implements USB_FRAME, ActionListener
         userCont.setLayout(new BorderLayout(10, 10));
 
         // Panel and Container Settup
-        userCont.add(titleP, BorderLayout.NORTH);
+        userCont.add(headerP, BorderLayout.NORTH);
         userCont.add(formatP, BorderLayout.CENTER);
         userCont.add(buttonP, BorderLayout.SOUTH);
 
@@ -75,21 +75,23 @@ public class USB_USER extends JFrame implements USB_FRAME, ActionListener
             fluffText[i] = new JLabel("");
         }
 
+        userTextA2.setText("<html>THERAPIES.  PLEASE CLICK THE <B>‘IN-CARE’</B> BUTTON TO ACCESS</html>");
+
         /* --------------------------------------------------------------------- */
 
         // Header Components
-        titleP.setLayout(new GridLayout(4, 1));
+        headerP.setLayout(new GridLayout(4, 1));
         userHeader.setFont(titleFont);
         userHeader2.setFont(titleFont);
 
-        titleP.setBackground(backColor);
+        headerP.setBackground(backColor);
         userHeader.setForeground(textColor);
         userHeader2.setForeground(textColor);
 
-        titleP.add(fluffText[0]);
-        titleP.add(userHeader);
-        titleP.add(userHeader2);
-        titleP.add(fluffText[1]);
+        headerP.add(fluffText[0]);
+        headerP.add(userHeader);
+        headerP.add(userHeader2);
+        headerP.add(fluffText[1]);
 
         /* --------------------------------------------------------------------- */
 

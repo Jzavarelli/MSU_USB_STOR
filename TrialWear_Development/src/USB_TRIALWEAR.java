@@ -1,4 +1,8 @@
 // Imported Packages
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 import javax.swing.*;
 
 /*
@@ -12,51 +16,70 @@ import javax.swing.*;
 public class USB_TRIALWEAR extends JOptionPane
 {
     // Main Variables: Used for deciding the main parameters of our method.
-    final static String ADMIN_COND = "admin";
 
     // Main Method
-    public static void main(String[] args) 
+    public static void main(String[] args) throws IOException
     {
         USB_USER userSys = new USB_USER();
         USB_ADMIN adminSys = new USB_ADMIN();
 
+        Path passwordFile = Path.of("C:\\Users\\jlzav\\Documents\\MSU_Internship\\Repo\\MSU_USB_STOR\\TrialWear_Development\\.vscode\\config_settings.txt");
+
         Boolean systemCheck;
-        String userPass;
-        int looper = 0;
+        String userIdentifier;
+        String delString = ("[{}]+");
+        //Delimiters (Dividing Characters) will need to be brakets in all configuration files.
+        int loopControl = 0;
+        int delLimit = 4; 
+        //Delimiter Limit will need to be equal to the number of delimiters in our password file.
+
+        String patientPass = Files.readString(passwordFile);
+        String delArray[] = patientPass.split(delString, delLimit);
+
 
         userSys.buildFrame();
-
+    
         // System Loop - Used in Main Method to continually run with Error, until the system exit.
-        while(looper < 1)
+        while(loopControl < 1)
         {
             systemCheck = userSys.getBoolean();
-            System.out.println("");
             //Initalizing Print Statement - TEMP
-
+            System.out.println("");
+            
             // Try Statement - Used in correcting broad errors.
             try
             {
                 if(systemCheck == true)
                 {
+            
                     UIManager.put("OptionPane.cancelButtonText", "Exit");
                     UIManager.put("OptionPane.okButtonText", "Submit");
-            
-                    userPass = JOptionPane.showInputDialog(null, "Enter the patient's date of birth.", "Submit Patient Password", QUESTION_MESSAGE);
+                    
+                    userIdentifier = JOptionPane.showInputDialog(null, "Enter the patient's date of birth.", "Submit Patient Identifier", JOptionPane.QUESTION_MESSAGE);
 
-                    if(userPass.equals("user"))
-                    {
-                        userSys.runWebsite(systemCheck);
-                        looper = 1;
-                    }
-                    else if(userPass.equals(ADMIN_COND))
-                    {
+                        if(userIdentifier.equals(delArray[1]))
+                        {
+                            userSys.runWebsite(systemCheck);
+                            loopControl = 1;
+                        }
+                        else if(userIdentifier.equals("admin"))
+                        {
+                            userSys.dispose();
+                            adminSys.buildFrame();
 
-                    }
+                            loopControl = 1;
+                        }
+                        else if(!userIdentifier.equals(delArray[1]))
+                        {
+                            JOptionPane.showMessageDialog(null, "Incorrect Patient Identifier", "IDENTIFIER ERROR", JOptionPane.ERROR_MESSAGE);
+                        }
                 }
             }
-            catch(Exception e)
+            catch(NullPointerException e)
             {
-                System.out.println("Error with Exception: " + e);
+                loopControl = 1;
+                System.exit(0);
+                System.out.println("Exit System: " + e);
             }
         }
     }
