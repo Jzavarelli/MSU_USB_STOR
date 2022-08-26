@@ -1,5 +1,5 @@
 Patient Password:
-{helloWorld}
+{10102000}
 
 Software Version:
 4.5

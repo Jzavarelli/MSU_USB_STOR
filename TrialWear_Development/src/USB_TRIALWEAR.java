@@ -36,7 +36,6 @@ public class USB_TRIALWEAR extends JOptionPane
         String patientPass = Files.readString(passwordFile);
         String delArray[] = patientPass.split(delString, delLimit);
 
-
         userSys.buildFrame();
     
         // System Loop - Used in Main Method to continually run with Error, until the system exit.
